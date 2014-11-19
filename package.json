@@ -1,0 +1,19 @@
+{
+  "name": "easy-flow",
+  "version": "0.0.1",
+  "description": "Easily use flow as part of watch tasks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "flow",
+    "gulp",
+    "watch"
+  ],
+  "author": "Neil Duffy",
+  "license": "MIT",
+  "dependencies": {
+    "flow-bin": "^0.1.1"
+  }
+}
