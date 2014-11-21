@@ -4,35 +4,37 @@ var flow = require('flow-bin'),
 
 var running = false;
 
-var initFlow = function () {
-    ex(flow, ['init']);
+var flowInit = function () {
+    if (!fs.existsSync('.flowconfig')) {
+        ex(flow, ['init']);
+    }
 };
 
-module.exports = {
-    start: function () {
-        if (!fs.existsSync('./.flowconfig')) {
-            initFlow();
-        }
+var ezflow = {
+    watch: function () {
+        flowInit();
+
+        process.stdin.resume();
+        process.on('SIGINT', function () {
+            ezflow.stop();
+            process.exit();
+        });
 
         ex(flow, ['start'], function () {
             running = true;
         });
     },
-    check: function () {
-        if (!fs.existsSync('./.flowconfig')) {
-            initFlow();
-        }
-        
-        if (running) {
-            ex(flow, function (err, stdout, stderr) {
-                console.log(stdout);
-            });
-        } else {
-            console.log('starting and checking');
-            ex(flow, ['check'], function (err, stdout, stderr) {
-                console.log(stdout);
-            });
-        }
+    check: function (next) {
+        var cmds = [];
+
+        flowInit();
+
+        if (!running) cmds.push('check');
+
+        ex(flow, cmds, function (err, stdout, stderr) {
+            console.log(stdout);
+            next();
+        });
     },
     stop: function () {
         ex(flow, ['stop'], function () {
@@ -40,3 +42,5 @@ module.exports = {
         });
     }
 };
+
+module.exports = ezflow;
