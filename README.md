@@ -14,7 +14,7 @@ gulp.task('build', function (cb) {
   flow.check(cb); // passing the callback for gulp isn't necessary, but makes the output prettier
 });
 
-// or a watch task, which will set up the utilize the Flow server
+// or a watch task, which will utilize the Flow server
 gulp.task('flow', function (cb) {
   flow.check(cb)
 });
