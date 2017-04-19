@@ -20,7 +20,7 @@ gulp.task('flow', function (cb) {
 });
 
 gulp.task('watch', function () {
-  flow.start();
+  flow.watch();
   gulp.watch('./src/file.js', ['flow']);
 });
 ```

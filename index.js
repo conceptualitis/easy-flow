@@ -33,7 +33,7 @@ var ezflow = {
 
         ex(flow, cmds, function (err, stdout, stderr) {
             console.log(stdout);
-            next();
+            if (next) { next() };
         });
     },
     stop: function () {

@@ -1,6 +1,6 @@
 {
   "name": "easy-flow",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Easily use flow as part of watch tasks",
   "main": "index.js",
   "scripts": {
@@ -18,6 +18,6 @@
   "author": "Neil Duffy",
   "license": "MIT",
   "dependencies": {
-    "flow-bin": "^0.1.1"
+    "flow-bin": "^0.44.2"
   }
 }
